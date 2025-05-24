@@ -21,6 +21,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
+      "permissions": ["CAMERA", "RECORD_AUDIO"],
       "package": "com.subbu_dhoni.myvideocallingapp"
     },
     "web": {
@@ -30,6 +31,28 @@
       "eas": {
         "projectId": "5aaa0505-7dc4-4404-a6af-efe111fcb79a"
       }
-    }
+    },
+    "plugins": [
+      [
+        "react-native-twilio-video-webrtc",
+        {
+          "cameraPermission": "Allow VideoCallApp to access your camera",
+          "microphonePermission": "Allow VideoCallApp to access your microphone"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "13.0"
+          },
+          "android": {
+            "compileSdkVersion": 33,
+            "targetSdkVersion": 33,
+            "buildToolsVersion": "33.0.0"
+          }
+        }
+      ]
+    ]
   }
 }

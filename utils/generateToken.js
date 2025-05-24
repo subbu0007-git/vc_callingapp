@@ -1,39 +1,12 @@
-import * as Crypto from 'expo-crypto';
+const twilio = require('twilio');
 
-async function generateToken(identity) {
-    const header = {
-        alg: 'HS256',
-        typ: 'JWT',
-    };
+const accountSid = 'your_account_sid'; // Replace with your Account SID
+const apiKey = 'your_api_key'; // Replace with your API Key
+const apiSecret = 'your_api_secret'; // Replace with your API Secret
 
-    const payload = {
-        iss: 'YOUR_TWILIO_API_KEY',
-        sub: 'YOUR_TWILIO_ACCOUNT_SID',
-        identity,
-        grants: {
-            video: {},
-        },
-    };
+const token = new twilio.jwt.AccessToken(accountSid, apiKey, apiSecret);
+token.identity = 'testUser';
+const videoGrant = new twilio.jwt.AccessToken.VideoGrant({ room: 'testRoom' });
+token.addGrant(videoGrant);
 
-    const secret = 'YOUR_TWILIO_API_SECRET';
-
-    const base64UrlEncode = (obj) =>
-        Buffer.from(JSON.stringify(obj))
-            .toString('base64')
-            .replace(/=/g, '')
-            .replace(/\+/g, '-')
-            .replace(/\//g, '_');
-
-    const encodedHeader = base64UrlEncode(header);
-    const encodedPayload = base64UrlEncode(payload);
-
-    const signature = await Crypto.digestStringAsync(
-        Crypto.CryptoDigestAlgorithm.SHA256,
-        `${encodedHeader}.${encodedPayload}`,
-        { key: secret }
-    );
-
-    return `${encodedHeader}.${encodedPayload}.${signature}`;
-}
-
-export default generateToken;
+console.log(token.toJwt());
