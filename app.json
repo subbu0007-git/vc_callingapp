@@ -49,10 +49,12 @@
               "implementation 'androidx.core:core:1.13.1'"
             ],
             "extraGradleConfigurations": [
-              "configurations.all {",
+               "configurations.all {",
               "  resolutionStrategy {",
               "    force 'androidx.core:core:1.13.1'",
               "    exclude group: 'com.android.support', module: 'support-compat'",
+              "    exclude group: 'com.android.support', module: 'support-core-utils'",
+              "    exclude group: 'com.android.support', module: 'support-annotations'",
               "  }",
               "}"
             ]
