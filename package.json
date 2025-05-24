@@ -15,10 +15,9 @@
     "expo-status-bar": "~2.2.3",
     "react": "19.0.0",
     "react-native": "0.79.2",
-    "react-native-crypto": "^2.2.0",
-    "react-native-randombytes": "^3.6.1",
     "react-native-twilio-video-webrtc": "^3.2.1",
-    "twilio": "^5.6.1"
+    "twilio": "^5.6.1",
+    "expo-crypto": "~14.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
