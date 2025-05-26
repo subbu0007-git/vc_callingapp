@@ -21,7 +21,10 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "permissions": ["CAMERA", "RECORD_AUDIO"],
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO"
+      ],
       "package": "com.subbu_dhoni.myvideocallingapp"
     },
     "web": {
@@ -34,24 +37,10 @@
     },
     "plugins": [
       "react-native-twilio-video-webrtc",
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            "extraGradleDependencies": [
-              "implementation 'androidx.core:core:1.13.1'"
-            ],
-            "extraGradleConfigurations": [
-              "configurations.all {",
-              "  resolutionStrategy {",
-              "    force 'androidx.core:core:1.13.1'",
-              "    exclude group: 'com.android.support'",
-              "  }",
-              "}"
-            ]
-          }
-        }
-      ]
+      {
+        "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+        "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone"
+      }
     ]
   }
 }
